@@ -1,3 +1,3 @@
-public class TrackRepository {
-    
-}
+package com.backend.onboarding.repository;
+
+public class TrackRepository extends JpaRepository<Track, Long> { }

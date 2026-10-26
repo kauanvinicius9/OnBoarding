@@ -2,29 +2,31 @@ CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    role VARCHAR(50) DEFAULT "MEMBER",
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    role VARCHAR(50) DEFAULT "USER",
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    password VARCHAR(255) NOT NULL,
 )
 
 CREATE TABLE Tracks (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     description TEXT,
-    catrgory VARCHAR(50)
+    category VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Modules (
     id SERIAL PRIMARY KEY,
     track_id INT REFERENCES tracks(id) ON DELETE CASCADE,
     title VARCHAR(150) NOT NULL,
-    content TEXT,
+    content TEXT NOT NULL,
     order_index INT NOT NULL
 );
 
 CREATE TABLE Questions (
     id SERIAL PRIMARY KEY,
     module_id INT REFERENCES modules(id) ON DELETE CASCADE,
-    question_text TEXT NOT NULL
+    question_text TEXT NOT NULL,
+    is_correct BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE Options (
@@ -40,5 +42,13 @@ CREATE TABLE User_Progress (
     module_id INT REFERENCES modules(id) ON DELETE CASCADE,
     completed BOOLEAN DEFAULT FALSE,
     score INT DEFAULT 0,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+);
+
+CREATE TABLE Certificates (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    track_id INT REFERENCES tracks(id) ON DELETE CASCADE,
+    issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    certificate_code VARCHAR(100) UNIQUE NOT NULL
 );
