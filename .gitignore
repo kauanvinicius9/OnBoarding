@@ -1,0 +1,8 @@
+dist
+node_modules
+.idea
+.vscode
+.vs
+/cache
+thumbs.db
+.target
