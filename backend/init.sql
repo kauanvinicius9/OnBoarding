@@ -19,7 +19,10 @@ CREATE TABLE Modules (
     track_id INT REFERENCES tracks(id) ON DELETE CASCADE,
     title VARCHAR(150) NOT NULL,
     content TEXT NOT NULL,
-    order_index INT NOT NULL
+    order_index INT NOT NULL,
+    pedagogical_objective TEXT,
+    practical_example TEXT,
+    estimated_minutes INT DEFAULT 15
 );
 
 CREATE TABLE Questions (

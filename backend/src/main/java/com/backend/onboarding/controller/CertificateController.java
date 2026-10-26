@@ -19,7 +19,7 @@ public class CertificateController {
     public Certificate generateCertificate(@RequestParam Long userId, @RequestParam Long trackId) {
         Certificate cert = new Certificate();
         cert.setUserId(userId);
-        cert.setTrackId(TrackId);
+        cert.setTrackId(trackId);
         cert.setCertificateCode("CERT-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
 
         return certificateRepository.save(cert);
