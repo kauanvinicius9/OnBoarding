@@ -13,26 +13,25 @@ public class JwtService {
     private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long jwtExpirationMs = 86400000;
 
-    public String generateToken(String email) {
+    public String generateToken(String email, String role) {
         return Jwts.builder()
                     .setSubject(email)
                     .claim("role", role)
-                    .setIssueAt(new Date())
+                    .setIssuedAt(new Date())
                     .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-                    .signWith(secretKey, SignatureAlgorithm, HS256)
+                    .signWith(secretKey, SignatureAlgorithm.HS256)
                     .compact();
+    }
+    public String extractEmail(String token) {
+        return Jwts.parserBuilder().setSigninKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
+    }
 
-        public String extractEmail(String token) {
-            return Jwts.parserBuilder().setSigninKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
-        }
-
-        public boolean validateToken(String token) {
-            try {
-                Jwts.parserBuilder().setSigninKey(secretKey).build().parseClaimsJws(token);
-                return true;
-            } catch (Exception e) {
-                return false;
-            }
+    public Boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder().setSigninKey(secretKey).build().parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

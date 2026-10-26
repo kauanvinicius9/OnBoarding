@@ -1,6 +1,6 @@
 package com.backend.onboarding.controller;
 
-import com.backend.onboarding.model.Certificate;
+import com.backend.onboarding.model.Certificates;
 import com.backend.onboarding.model.UserProgress;
 import com.backend.onboarding.repository.CertificateRepository;
 import com.backend.onboarding.repository.ModuleRepository;
@@ -44,7 +44,7 @@ public class TrainingProgressController {
             boolean alreadyHasCertificate = certificateRepository.existsByUserIdAndTrackId(userId, trackId);
             
             if (!alreadyHasCertificate) {
-                Certificate cert = new Certificate();
+                Certificates cert = new Certificates();
                 cert.setUserId(userId);
                 cert.setTrackId(trackId);
                 cert.setCertificateCode("CERT-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());

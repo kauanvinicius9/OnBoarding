@@ -5,6 +5,7 @@ import com.backend.onboarding.repository.CertificateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.cert.Certificate;
 import java.util.UUID;
 
 @RestController

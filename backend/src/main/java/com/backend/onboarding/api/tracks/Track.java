@@ -6,7 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tracks")
 @Data
-public class Task {
+public class Track {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
