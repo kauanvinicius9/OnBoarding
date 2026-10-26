@@ -47,7 +47,7 @@ public class AuthController {
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             if (passwordEncoder.matches(password, user.getPassword())) {
-                String token = jwtService.generateToken(user.getEmail());
+                String token = jwtService.generateToken(user.getEmail(), user.getRole());
                 return ResponseEntity.ok(Map.of(
                     "token", token,
                     "name", user.getName(),

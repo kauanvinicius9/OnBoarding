@@ -14,7 +14,13 @@ public class JwtService {
     private final long jwtExpirationMs = 86400000;
 
     public String generateToken(String email) {
-        return Jwts.builder().setSubject(email).setIssueAt(new Date()).setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs)).signWith(secretKey).compact();
+        return Jwts.builder()
+                    .setSubject(email)
+                    .claim("role", role)
+                    .setIssueAt(new Date())
+                    .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                    .signWith(secretKey, SignatureAlgorithm, HS256)
+                    .compact();
 
         public String extractEmail(String token) {
             return Jwts.parserBuilder().setSigninKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
