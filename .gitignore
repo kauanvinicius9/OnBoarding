@@ -5,5 +5,6 @@ node_modules
 .vs
 /cache
 thumbs.db
-.target
+target
+.angular
 mvn
