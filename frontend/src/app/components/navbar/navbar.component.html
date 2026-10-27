@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <img src="../../../../src/assets/Logo-Onboarding-Orange-Black-811x213.png" alt="logo">
+
+    <div class="menu-links">
+        <a routerLink="/modules">Módulos</a>
+
+        <a *ngIf="authService.isAdmin()" routerLink="/admin" class="admin-link">
+            Painel Administrativo
+        </a>
+    </div>
+    
+    <button (click)="logout()">Sair</button>
+</nav>

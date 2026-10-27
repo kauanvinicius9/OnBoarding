@@ -1,0 +1,67 @@
+.admin-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: sans-serif;
+}
+
+.card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+
+    input,
+    .form-group textarea {
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+.btn-primary {
+    background: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+        background: #aaa;
+        cursor: not-allowed;
+    }
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
