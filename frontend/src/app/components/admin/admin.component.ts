@@ -1,14 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ModuleService, TrainningModule } from '../../services/module.service';
+import { Component, OnInit, inject } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ModuleService, TrainningModule } from "../../services/module.service";
 
 @Component({
-  selector: 'app-admin-dashboard',
+  selector: "app-admin-dashboard",
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  styleUrl: './admin.component.scss',
-  templateUrl: './admin.component.html',
+  styleUrl: "./admin.component.scss",
+  templateUrl: "./admin.component.html",
 })
 export class AdminDashboardComponent implements OnInit {
   private fb = inject(FormBuilder);
