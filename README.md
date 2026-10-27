@@ -117,4 +117,4 @@ The training is structured into **10 sequential modules**. The student can only 
 
 ---
 
-`Backend` has a web documentation **Swagger**.
+`Backend` has a web documentation **Swagger**: `http://localhost:8080/swagger-ui/index.html`
