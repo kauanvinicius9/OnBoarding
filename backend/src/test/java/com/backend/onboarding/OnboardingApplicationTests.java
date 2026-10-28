@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class OnboardingApplicationTests {
 
 	@Test
-	void contextLoads() {
+		void contextLoads() {
 	}
 
 }
