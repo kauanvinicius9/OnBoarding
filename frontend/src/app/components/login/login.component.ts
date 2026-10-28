@@ -31,6 +31,7 @@ export class LoginComponent {
                 },
                 error: (err) => {
                     this.errorMessage = "Credencias inválidas ou erro de ligação";
+                    alert(this.errorMessage);
                     console.error(err);
                 }
             });

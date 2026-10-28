@@ -15,14 +15,14 @@
       <div class="module-card" [class.completed]="mod.completed">
         <div class="card-top">
           <span class="badge">{{ mod.category }}</span>
-          <span class="status-icon">
-            @if (mod.completed) { ✅ } @else { ⏳ }
+          <span class="status-label">
+            @if (mod.completed) { <p>Concluído</p> } @else { <p>Pendente</p> }
           </span>
         </div>
 
         <h3>{{ mod.id }}. {{ mod.title }}</h3>
 
-        <div class="progress-section">
+        <div class="progress-action">
           <div class="progress-info">
             <span>Progresso</span>
             <span>{{ mod.progress }}%</span>
@@ -33,7 +33,7 @@
         </div>
 
         <button class="btn-access" [routerLink]="['/modules', mod.id]">
-          {{ mod.completed ? 'Revisar módulo' : 'Continuar' }}
+          {{ mod.completed ? 'Revisar módulo' : (mod.started ? 'Continuar' : 'Iniciar') }}
         </button>
       </div>
     }

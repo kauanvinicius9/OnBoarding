@@ -12,6 +12,12 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-group {
     margin-bottom: 15px;
     display: flex;
@@ -31,11 +37,27 @@
 
         &:focus {
             outline: none;
+            border-color: #cf8906;
         }
     }
 }
 
-.error {
-    color: #961010;
-    margin-top: 10px;
+.button {
+    width: 100%;
+    background: #cf8906;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+
+    &:not(:disabled):hover {
+        background: #a56c03;
+    }
+
+    &:disabled {
+        background: #dad8d8;
+        cursor: not-allowed;
+    }
 }
