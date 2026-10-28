@@ -6,7 +6,7 @@
 
 ## Overview
 
-This documentation details the `back-end` architecture in **Spring Boot 3+**, user profiles, `API` endpoints, **10 modules** training navigation flow, **certificate** issuance and **security** rules.
+This documentation details the `back-end` architecture in **Spring Boot 3+**, user profiles, `API` endpoints, **10 modules** training navigation flow and **security** rules.
 
 ---
 
@@ -17,7 +17,7 @@ The system has a **Two-Tier** access structure based on *Roles*:
 | User | Scroll | Description and Permissions |
 | :--- | :--- | :--- |
 | **Founder / Administrator** | `ROLE_ADMIN` | You have full access to the system. You can view performance reports, track the progress of all students, list registered users and manage training content. |
-| **Trainee / Student** | `ROLE_USER` | You have exclusive access to the learning environment. You can view the available tracks, study the released modules, record progress and issue your certificate upon completing the training. |
+| **Trainee / Student** | `ROLE_USER` | You have exclusive access to the learning environment. You can view the available tracks, study the released modules and record progress. |
 
 ---
 
@@ -42,7 +42,6 @@ Application security is based on `JSON` Web Tokens (**JWT**) with **Stateless** 
 * `/api/auth/**` $\rightarrow$ **Public** (Login and Registration);
 * `/api/admin/**` $\rightarrow$ **Just `ROLE_ADMIN`**;
 * `/api/training/**` $\rightarrow$ **Authenticated (`ROLE_USER` or `ROLE_ADMIN`)**;
-* `/api/certificates/**` $\rightarrow$ **Authenticated (`ROLE_USER` or `ROLE_ADMIN`)**.
 
 ---
 
@@ -51,23 +50,15 @@ Application security is based on `JSON` Web Tokens (**JWT**) with **Stateless** 
 The training is structured into **10 sequential modules**. The student can only advance to the next module after completing the previous one.
 
 ```
-[ Module 01 ] ──(Complete)──> [ Module 02 ] ──(Complete)──> ... ──> [ Module 10 ] ──> [ Issue Certificate ]
+[ Module 01 ] ──(Complete)──> [ Module 02 ] ──(Complete)──> ... ──> [ Module 10 ]
 ```
 
 ### Learning Business Rules:
 
 1. **Module 1:** Released by default when starting training;
 2. **Modules 2 to 10:** Remain blocked until the previous module has the status `completed = true` in the `user_progress` table;
-3. **Module 10 (Completion):** Upon completion of the 10th module, the API automatically checks whether all 10 modules have been completed and generates the **Single Certificate**;
+3. **Module 10 (Completion):** Upon completion of the 10th module, the API automatically checks whether all 10 modules have been completed;
 4. **Review:** Completed modules remain accessible for optional reading at any time.
-
----
-
-## Certificate Issuance System
-
-* **Unicity Rule:** Each user is entitled to **1 single certificate** per completed trail;
-* **Validation Code:** Automatically generated in the format `CERT-BND342B2` (UUID of 8 alphanumeric characters in uppercase);
-* **Generation:** Occurs automatically after the Module 10 completion request or via call to the `/api/certificates/generate` endpoint.
 
 ---
 
@@ -98,23 +89,7 @@ The training is structured into **10 sequential modules**. The student can only 
 
 | Method | Endpoint | Access | Description |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/training/progress/finish-module` | Authenticated | Marks the module as complete. If it is the 10th, it generates the certificate. |
+| `POST` | `/api/training/progress/finish-module` | Authenticated | Marks the module as complete. If it is the 10th |
 | `GET` | `/api/training/progress/user/{userId}` | Authenticated | Returns the IDs of all modules the user has completed. |
-
-### 5.5 Certificates (`/api/certificates`)
-
-| Method | Endpoint | Access | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/certificates/generate` | Authenticated | Manually generates the user certificate for a trail. |
-| `GET` | `/api/certificates/user/{userId}` | Authenticated | Consult the certificate data generated for the student. |
----
-
-* **`User`**: `id`, `name`, `email`, `password`, `role` (`USER` / `ADMIN`);
-* **`Track`**: `id`, `title`, `description`;
-* **`Module`**: `id`, `track_id`, `title`, `content`, `order_index`, `estimated_minutes`;
-* **`UserProgress`**: `id`, `user_id`, `module_id`, `completed` (boolean);
-* **`Certificate`**: `id`, `user_id`, `track_id`, `certificate_code`, `issue_date`.
-
----
 
 `Backend` has a web documentation **Swagger**: `http://localhost:8080/swagger-ui/index.html`

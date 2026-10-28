@@ -47,11 +47,3 @@ CREATE TABLE User_Progress (
     score INT DEFAULT 0,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
-
-CREATE TABLE Certificates (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id) ON DELETE CASCADE,
-    track_id INT REFERENCES tracks(id) ON DELETE CASCADE,
-    issue_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    certificate_code VARCHAR(100) UNIQUE NOT NULL
-);
