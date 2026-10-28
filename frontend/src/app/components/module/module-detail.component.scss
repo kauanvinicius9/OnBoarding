@@ -1,0 +1,102 @@
+.lesson-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: inherit;
+
+  .lesson-header {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+
+    .btn-back {
+      background: none;
+      border: none;
+      color: #0969da;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      font-size: 14px;
+      width: fit-content;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #1a1a1a;
+    }
+  }
+
+  .lesson-content-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    .step-content {
+      min-height: 120px;
+      margin-bottom: 30px;
+
+      h3 {
+        font-size: 18px;
+        color: #212529;
+        margin-bottom: 12px;
+      }
+
+      p {
+        color: #57606a;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+    }
+
+    .lesson-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #eaecef;
+      padding-top: 20px;
+
+      button {
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-secondary {
+        background: #f1f3f5;
+        color: #495057;
+
+        &:hover {
+          background: #e9ecef;
+        }
+      }
+
+      .btn-primary {
+        background: #0969da;
+        color: #ffffff;
+
+        &:hover {
+          background: #034ad8;
+        }
+      }
+
+      .btn-success {
+        background: #2ea44f;
+        color: #ffffff;
+
+        &:hover {
+          background: #22863a;
+        }
+      }
+    }
+  }
+}

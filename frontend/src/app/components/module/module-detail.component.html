@@ -1,0 +1,40 @@
+<div class="lesson-container">
+  <header class="lesson-header">
+    <button class="btn-back" (click)="goBack()">Voltar para Trilha</button>
+    <h2>Módulo {{ moduleId() }}: Conteúdo da Aula</h2>
+  </header>
+
+  <div class="lesson-content-card">
+    @if (currentStep() === 1) {
+      <div class="step-content">
+        <h3>Passo 1 de 3: Conceitos Fundamentais</h3>
+        <p>Introdução teórica do módulo, textos explicativos e exemplos visuais para o aluno absorver o conteúdo.</p>
+      </div>
+
+    } @else if (currentStep() === 2) {
+      <div class="step-content">
+        <h3>Passo 2 de 3: Exemplo Prático e Aplicação</h3>
+        <p>Visualização de scripts, códigos ou imagens de como a ferramenta funciona no dia a dia da empresa.</p>
+      </div>
+
+    } @else {
+      <div class="step-content">
+        <h3>Passo 3 de 3: Validação e Conclusão</h3>
+        <p>Fim deste módulo! Clique no botão abaixo para registrar a conclusão e atualizar o progresso para 100%.</p>
+      </div>
+    }
+
+    <div class="lesson-actions">
+      @if (currentStep() > 1) {
+        <button class="btn-secondary" (click)="prevStep()">Anterior</button>
+      }
+      
+      @if (currentStep() < 3) {
+        <button class="btn-primary" (click)="nextStep()">Próximo passo</button>
+
+      } @else {
+        <button class="btn-success" (click)="completeModule()">Concluir módulo</button>
+      }
+    </div>
+  </div>
+</div>

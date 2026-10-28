@@ -1,8 +1,41 @@
-<div class="container">
-  <h2>Módulos de OnBoarding</h2>
-  <ul>
-    <li *ngFor="let mod of modules">
-        <strong>{{ mod.title }}</strong> - {{ mod.description }}
-    </li>
-  </ul>
+<div class="modules-container">
+  <header class="modules-header">
+    <h1>Trilha de Treinamento</h1>
+    <p>Acompanhe seu progresso nos 10 módulos obrigatórios da integração.</p>
+
+    @if (isAllCompleted()) {
+      <div>
+        <span>Você concluiu todos os módulos da trilha</span>
+      </div>
+    }
+  </header>
+
+  <div class="modules-grid">
+    @for (mod of modules(); track mod.id) {
+      <div class="module-card" [class.completed]="mod.completed">
+        <div class="card-top">
+          <span class="badge">{{ mod.category }}</span>
+          <span class="status-icon">
+            @if (mod.completed) { ✅ } @else { ⏳ }
+          </span>
+        </div>
+
+        <h3>{{ mod.id }}. {{ mod.title }}</h3>
+
+        <div class="progress-section">
+          <div class="progress-info">
+            <span>Progresso</span>
+            <span>{{ mod.progress }}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="mod.progress"></div>
+          </div>
+        </div>
+
+        <button class="btn-access" [routerLink]="['/modules', mod.id]">
+          {{ mod.completed ? 'Revisar módulo' : 'Continuar' }}
+        </button>
+      </div>
+    }
+  </div>
 </div>

@@ -1,0 +1,113 @@
+.modules-container {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    
+    .modules-header {
+        margin-bottom: 30px;
+
+        h1 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #666;
+            font-size: 15px;
+        }
+    }
+
+    .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 20px;
+
+        .module-card {
+            background: #ffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            }
+
+            &.completed {
+                border-color: #2ea44f;
+                background: #f6fff8;
+            }
+
+            .card-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 12px;
+
+                .badge {
+                    background: #f1f3f5;
+                    color: #495057;
+                    font-size: 12px;
+                    font-weight: 600;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                }
+
+                .status-icon {
+                    font-size: 12px;
+                }
+            }
+
+            h2 {
+                font-size: 18px;
+                color: #212529;
+                margin-bottom: 20px;
+                line-height: 1.4;
+            }
+
+            .progress-action {
+                margin-bottom: 20px;
+
+                .progress-info {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 13px;
+                    color: #6c757d;
+                    margin-bottom: 5px;
+                }
+
+                .progress-bar {
+                    width: 100%;
+                    height: 8px;
+                    background:#e9ecef;
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    .progress-fill {
+                        height: 100%;
+                        background: #2ea44f;
+                        border-radius: 5px;
+                        transition: width 0.3s ease;
+                    }
+                }
+            }
+
+            .btn-access {
+                width: 100%;
+                padding: 10px;
+                background: #cf8906;
+                color: #ffffff;
+                border: none;
+                border-radius: 7px;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+        }
+    }
+}
