@@ -36,7 +36,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
-                // .anyRequest().permitAll() (Permissão liberada temporariamente pra acesso local)
+                .anyRequest().permitAll() 
+                // Permissão pode ser liberada temporariamente pra acesso local
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

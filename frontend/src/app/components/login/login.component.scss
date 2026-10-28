@@ -28,6 +28,10 @@
         border: 1px solid #ccc;
         border-radius: 6px;
         margin-top: 4px;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 

@@ -3,12 +3,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>Utilizador</label>
-            <input type="text" formControlName="username"/>
+            <input type="text" formControlName="username" placeholder="Seu nome"/>
         </div>
 
         <div class="form-group">
             <label>Palavra-Passe</label>
-            <input type="text" formControlName="password">
+            <input type="text" formControlName="password" placeholder="Sua senha">
         </div>
 
         <button type="submit" [disabled]="loginForm.invalid" class="button">Entrar</button>
