@@ -106,9 +106,7 @@ export class ModulesComponent {
         return this.modules().every(mod => mod.completed);
     });
 
-    constructor() {
-        this.loadProgress();
-    }
+    constructor() {this.loadProgress()}
 
     private loadProgress() {
         const savedProgress = localStorage.getItem("onboard_modules_progress");
