@@ -21,9 +21,7 @@ public class AdminController {
     private UserProgressRepository userProgressRepository;
 
     @GetMapping("/users")
-    public List<User> getAllStudents() {
-        return userRepository.findAll();
-    }
+    public List<User> getAllStudents() { return userRepository.findAll(); }
 
     @GetMapping("/progress/{userId}")
     public ResponseEntity<?> getStudentProgress(@PathVariable Long userId) {

@@ -15,9 +15,5 @@ public class TrainningModuleController {
     private ModuleRepository moduleRepository;
 
     @GetMapping("/{id}/content")
-    public ResponseEntity<Module> getModuleTrainingContent(@PathVariable Long id) {
-        return moduleRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    public ResponseEntity<Module> getModuleTrainingContent(@PathVariable Long id) {return moduleRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());}
 }

@@ -48,15 +48,9 @@ public class AuthController {
             User user = userOpt.get();
             if (passwordEncoder.matches(password, user.getPassword())) {
                 String token = jwtService.generateToken(user.getEmail(), user.getRole());
-                return ResponseEntity.ok(Map.of(
-                    "token", token,
-                    "name", user.getName(),
-                    "email", user.getEmail(),
-                    "role", user.getRole()
-                ));
+                return ResponseEntity.ok(Map.of( "token", token, "name", user.getName(), "email", user.getEmail(), "role", user.getRole()));
             }
         }
-
         return ResponseEntity.status(401).body(Map.of("error", "E-mail ou senha inválido"));
     }
 }

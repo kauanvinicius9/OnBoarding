@@ -16,12 +16,8 @@ public class TrackController {
     private TrackRepository trackRepository;
 
     @GetMapping
-    public List<Track> getAllTracks() {
-        return trackRepository.findAll();
-    }
+    public List<Track> getAllTracks() { return trackRepository.findAll(); }
 
     @PostMapping
-    public Track createTrack(@RequestBody Track track) {
-        return trackRepository.save(track);
-    }
+    public Track createTrack(@RequestBody Track track) { return trackRepository.save(track); }
 } 
