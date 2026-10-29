@@ -25,16 +25,9 @@
     }
 
     <div class="lesson-actions">
-      @if (currentStep() > 1) {
-        <button class="btn-secondary" (click)="prevStep()">Anterior</button>
-      }
-      
-      @if (currentStep() < 3) {
-        <button class="btn-primary" (click)="nextStep()">Próximo passo</button>
-
-      } @else {
-        <button class="btn-success" (click)="completeModule()">Concluir módulo</button>
-      }
+      @if (currentStep() > 1) {<button class="btn-secondary" (click)="prevStep()">Anterior</button>}
+      @if (currentStep() < 3) {<button class="btn-primary" (click)="nextStep()">Próximo passo</button>} 
+      @else {<button class="btn-success" (click)="completeModule()">Concluir módulo</button>}
     </div>
   </div>
 </div>

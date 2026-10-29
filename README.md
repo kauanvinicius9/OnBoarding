@@ -4,6 +4,14 @@
 
 This documentation details the `back-end` architecture in **Spring Boot 3+**, user profiles, `API` endpoints, **10 modules** training navigation flow and **security** rules.
 
+Your progress will be save on `localStorage`. If you want to reset, access to **DevTools** inspecting the website and input on console:
+
+```
+localStorage.clear()
+```
+
+Restart the server after execute command.
+
 ---
 
 ## User Profiles and Access

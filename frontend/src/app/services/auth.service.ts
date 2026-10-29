@@ -32,15 +32,7 @@ export class AuthService {
         );
     }
 
-    logout(): void {
-        localStorage.removeItem("auth_token");
-    }
-
-    getRole(): string | null {
-        return localStorage.getItem("user_role");
-    }
-
-    isAdmin(): boolean {
-        return this.getRole() === "ADMIN";
-    }
+    logout(): void {localStorage.removeItem("auth_token")}
+    getRole(): string | null {return localStorage.getItem("user_role")}
+    isAdmin(): boolean {return this.getRole() === "ADMIN"}
 }

@@ -27,9 +27,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body(Map.of("error", "E-mail já cadastrado"));
-        }
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {return ResponseEntity.badRequest().body(Map.of("error", "E-mail já cadastrado"));}
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);

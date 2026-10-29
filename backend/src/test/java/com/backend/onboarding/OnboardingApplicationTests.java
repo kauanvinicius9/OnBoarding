@@ -9,5 +9,4 @@ class OnboardingApplicationTests {
 	@Test
 		void contextLoads() {
 	}
-
 }

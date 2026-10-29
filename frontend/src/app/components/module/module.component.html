@@ -15,9 +15,7 @@
       <div class="module-card" [class.completed]="mod.completed">
         <div class="card-top">
           <span class="badge">{{ mod.category }}</span>
-          <span class="status-label">
-            @if (mod.completed) { <p>Concluído</p> } @else { <p>Pendente</p> }
-          </span>
+          <span class="status-label">@if (mod.completed) { <p>Concluído</p> } @else { <p>Pendente</p> }</span>
         </div>
 
         <h3>{{ mod.id }}. {{ mod.title }}</h3>
@@ -27,6 +25,7 @@
             <span>Progresso</span>
             <span>{{ mod.progress }}%</span>
           </div>
+
           <div class="progress-bar">
             <div class="progress-fill" [style.width.%]="mod.progress"></div>
           </div>
