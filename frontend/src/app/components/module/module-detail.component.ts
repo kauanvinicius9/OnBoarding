@@ -42,7 +42,5 @@ export class ModuleDetailComponent {
         this.router.navigate(["/modules"]);
     }
 
-    goBack() {
-        this.router.navigate(["/modules"]);
-    }
+    goBack() {this.router.navigate(["/modules"]);}
 }
